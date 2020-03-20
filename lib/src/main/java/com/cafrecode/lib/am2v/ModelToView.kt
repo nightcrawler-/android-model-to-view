@@ -5,17 +5,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ModelToView {
 
-    companion object {
+    private val recyclerView: RecyclerView
+    private val adapter = ResultsAdapter()
 
-        private val adapter = ResultsAdapter()
-        /**
-         * Pass in the model and the recyclerview that is intended to host the models content
-         */
-        @JvmStatic
-        fun `for`(model: Object, recyclerView: RecyclerView) {
-            recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-            recyclerView.adapter = adapter
-            adapter.content = FieldsUtil.getFieldValuePairs(model)
-        }
+    constructor(recyclerView: RecyclerView) {
+        this.recyclerView = recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+        recyclerView.adapter = adapter
     }
+
+    fun setModel(model: Object) {
+        adapter.content = FieldsUtil.getFieldValuePairs(model)
+    }
+
 }
