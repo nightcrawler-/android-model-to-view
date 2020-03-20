@@ -14,7 +14,7 @@ class ModelToView {
      */
     constructor(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
-        this.adapter = ResultsAdapter()
+        this.adapter = ResultsAdapter() as BaseAdapter<RecyclerView.ViewHolder>
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.adapter = adapter
     }
