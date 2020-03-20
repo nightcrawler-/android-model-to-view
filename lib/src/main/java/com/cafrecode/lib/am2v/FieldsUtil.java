@@ -33,11 +33,18 @@ public class FieldsUtil {
             boolean customName = fields[i].isAnnotationPresent(ExtractedName.class);
             boolean withUnit = fields[i].isAnnotationPresent(MeasurementUnit.class);
 
+            Object value = fields[i].get(obj);
 
-            if (!ignored && fields[i].get(obj) != null) {
+
+            if (!ignored) {
 
                 String title = toTitleCase(splitCamelCase(name));
-                String value = fields[i].get(obj).toString();
+
+                if (value == null) {
+                    value = "0";
+                } else {
+                    value = fields[i].get(obj).toString();
+                }
 
                 if (capitalize) {
                     title = title.toUpperCase(Locale.ENGLISH);
@@ -48,7 +55,7 @@ public class FieldsUtil {
                 if (withUnit) {
                     value = value + " " + fields[i].getAnnotation(MeasurementUnit.class).name();
                 }
-                results.add(new Result(title + ":", value));
+                results.add(new Result(title + ":", value.toString()));
             }
         }
 
