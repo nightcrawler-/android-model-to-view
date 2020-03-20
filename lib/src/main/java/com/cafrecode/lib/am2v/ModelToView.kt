@@ -14,7 +14,7 @@ class ModelToView {
         recyclerView.adapter = adapter
     }
 
-    fun setModel(model: Object) {
+    fun setModel(model: Any) {
         adapter.content = FieldsUtil.getFieldValuePairs(model)
     }
 
