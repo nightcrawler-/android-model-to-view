@@ -6,15 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cafrecode.lib.am2v.databinding.ListItemBinding
 
 
-class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
+class ResultsAdapter : BaseAdapter<ResultsAdapter.ViewHolder>() {
 
-    var content: List<Result>? = null
-        set(value) {
-            field = value
-            this.notifyDataSetChanged()
-        }
-
-    inner class ViewHolder(internal var binding: ListItemBinding) :
+    inner class ViewHolder(private var binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Result) {
