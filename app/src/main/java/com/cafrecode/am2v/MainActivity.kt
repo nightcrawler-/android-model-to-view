@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         modelToView = ModelToView(binding.content)
-        modelToView.setModel(packaging as Object)
+        modelToView.setModel(packaging)
     }
 
 
