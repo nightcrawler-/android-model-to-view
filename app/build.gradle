@@ -40,6 +40,8 @@ android {
 
 dependencies {
 
+    implementation 'com.github.nightcrawler-:android-model-to-view:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
