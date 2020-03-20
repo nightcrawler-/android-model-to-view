@@ -10,21 +10,21 @@ class ModelToView {
     lateinit var adapter: BaseAdapter<RecyclerView.ViewHolder>
 
     /**
-     * Default constructor will use the default results adapter. Custom adapters can be applied
+     * Default constructor will use the default results adapter. Custom adapters can be applied. Default layoutmanager
      */
     constructor(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
+        this.adapter = ResultsAdapter()
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter = ResultsAdapter()
+        recyclerView.adapter = adapter
     }
 
     /**
-     * To use a custom adapter
+     * To use a custom adapter. Makesure to set the required layout manager on your recycler view
      */
     constructor(recyclerView: RecyclerView, adapter: BaseAdapter<RecyclerView.ViewHolder>) {
         this.adapter = adapter
         this.recyclerView = recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.adapter = adapter
     }
 
