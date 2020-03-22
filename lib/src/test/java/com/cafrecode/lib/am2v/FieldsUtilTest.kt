@@ -1,6 +1,5 @@
 package com.cafrecode.lib.am2v
 
-import android.graphics.DashPathEffect
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 
@@ -10,9 +9,10 @@ internal class FieldsUtilTest {
     @Test
     fun getFieldValuePairs() {
 
-        val consignment = Consignment("1", "Ndumaa")
+        val consignment = Consignment("1", "Ndumaa", "ME", "ME", "ME")
         val results = FieldsUtil.getFieldValuePairs(consignment)
 
+        assertEquals(6, results.size)
         assertEquals("Ndumaa", results[0].content)
         assertEquals("Product Type:", results[0].title)
 
