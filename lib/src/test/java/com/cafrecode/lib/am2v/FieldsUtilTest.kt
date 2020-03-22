@@ -38,14 +38,28 @@ internal class FieldsUtilTest {
         assertEquals("S 1s:", packagingResult[5].title)
         assertEquals("34 Kgs", packagingResult[5].content)
 
-        val dashboard = Dashboard(null, null, 9.0, 10.2, 0.0, null)
+        val dashboard = Dashboard(12.0, null, 9.0, 10.2, 0.0, null)
         val dashboardResult = FieldsUtil.getFieldValuePairs(dashboard)
 
-        assertEquals("Receiving:", dashboardResult[0].title)
-        assertEquals("0", dashboardResult[0].content)
 
-        assertEquals("Drying:", dashboardResult[2].title)
-        assertEquals("9.0", dashboardResult[2].content)
+        //Dashboard assertions
+        assertEquals("Receiving:", dashboardResult[0].title)
+        assertEquals("12.0", dashboardResult[0].content)
+
+        assertEquals("Loading:", dashboardResult[1].title)
+        assertEquals("0", dashboardResult[1].content)
+
+        assertEquals("Drying:", dashboardResult[3].title)
+        assertEquals("9.0", dashboardResult[3].content)
+
+        assertEquals("Offloading:", dashboardResult[2].title)
+        assertEquals("10.2", dashboardResult[2].content)
+
+        assertEquals("Sorting:", dashboardResult[4].title)
+        assertEquals("0.0", dashboardResult[4].content)
+
+        assertEquals("Packing:", dashboardResult[5].title)
+        assertEquals("0", dashboardResult[5].content)
 
     }
 }

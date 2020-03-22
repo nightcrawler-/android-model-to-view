@@ -1,12 +1,16 @@
 package com.cafrecode.lib.am2v
 
+import com.cafrecode.lib.am2v.annotations.Index
+import com.cafrecode.lib.am2v.annotations.Ordered
+
+@Ordered
 data class Dashboard(
-    var receiving: Double? = 0.0,
-    var loading: Double? = 0.0,
-    var drying: Double? = 0.0,
-    var offloading: Double? = 0.0,
-    var sorting: Double? = 0.0,
-    var packing: Double? = 0.0
+    @Index(value = 0) var receiving: Double? = 0.0,
+    @Index(value = 1) var loading: Double? = 0.0,
+    @Index(value = 3) var drying: Double? = 0.0,
+    @Index(value = 2) var offloading: Double? = 0.0,
+    @Index(value = 4) var sorting: Double? = 0.0,
+    @Index(value = 5) var packing: Double? = 0.0
 )
 
 /*

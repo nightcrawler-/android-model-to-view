@@ -3,10 +3,13 @@ package com.cafrecode.lib.am2v;
 import com.cafrecode.lib.am2v.annotations.Capitalize;
 import com.cafrecode.lib.am2v.annotations.ExtractedName;
 import com.cafrecode.lib.am2v.annotations.IgnoreExtraction;
+import com.cafrecode.lib.am2v.annotations.Index;
 import com.cafrecode.lib.am2v.annotations.MeasurementUnit;
+import com.cafrecode.lib.am2v.annotations.Ordered;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,6 +26,14 @@ public class FieldsUtil {
         Class<? extends Object> clazz = obj.getClass();
 
         Field[] fields = clazz.getDeclaredFields();
+
+        //determine if class be ordered then do the ordering before proceeding
+
+        boolean isOrdered = clazz.isAnnotationPresent(Ordered.class);
+
+        if (isOrdered) {
+            sort(fields);
+        }
 
         for (int i = 0; i < fields.length; i++) {
             String name = fields[i].getName();
@@ -45,7 +56,6 @@ public class FieldsUtil {
                 } else {
                     value = fields[i].get(obj).toString();
                 }
-
                 if (capitalize) {
                     title = title.toUpperCase(Locale.ENGLISH);
                 }
@@ -89,5 +99,22 @@ public class FieldsUtil {
             titleCase.append(c);
         }
         return titleCase.toString();
+    }
+
+    private static void sort(Field[] fields) {
+
+        Arrays.sort(fields, (o1, o2) -> {
+            Index or1 = o1.getAnnotation(Index.class);
+            Index or2 = o2.getAnnotation(Index.class);
+            // nulls last
+            if (or1 != null && or2 != null) {
+                return or1.value() - or2.value();
+            } else if (or1 != null && or2 == null) {
+                return -1;
+            } else if (or1 == null && or2 != null) {
+                return 1;
+            }
+            return o1.getName().compareTo(o2.getName());
+        });
     }
 }
