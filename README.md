@@ -1,6 +1,7 @@
+# android-model-to-view
+
 [![](https://jitpack.io/v/nightcrawler-/android-model-to-view.svg)](https://jitpack.io/#nightcrawler-/android-model-to-view)
 
-# android-model-to-view
 
 This library includes a custom widget that makes it simpler to present models with a large number of fields with minimum effort. It uses the names and values of each field in your model to build a presentation layout with just a few lines of code.
 
