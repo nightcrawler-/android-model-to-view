@@ -45,6 +45,7 @@ Call `modelToView.setModel(<your model>)` to extract and display contents.
 @IgnoreExtraction - Skip the field
 @Extracted name - Use a different name for the extracted title (different from the field name)
 @MeasurementUnit - Append a measurement unit at the end of the extracted value
+@Ordered - Since the order of the fields is not guaranteed (at least on JVM +1.6, they might be returned in the declared order). This annotation on the class, in conjunctio with @Index on the field, returns the fields in a pre-determined order. 
 
 ```
 
