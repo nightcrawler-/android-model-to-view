@@ -23,6 +23,7 @@
             android:layout_weight="1" />
 
         <TextView
+            android:autoLink="web"
             android:textStyle="bold"
             android:gravity="left"
             android:text="@{result.content}"
