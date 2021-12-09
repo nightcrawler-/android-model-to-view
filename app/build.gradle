@@ -64,7 +64,7 @@ android {
 
 dependencies {
 
-    implementation 'com.github.nightcrawler-:android-model-to-view:1.0.1'
+    implementation project(path: ':lib') // Well, you need the module that you have, what kinda dependency would it be if it had to be published first
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
